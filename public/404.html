@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternConnect</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        h1 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="spinner"></div>
+        <h1>InternConnect</h1>
+        <p>Redirecting to login...</p>
+    </div>
+    
+    <script>
+        // GitHub Pages SPA redirect logic
+        const path = window.location.pathname;
+        const basePath = '/intern';
+        
+        // Remove the base path if it exists
+        const cleanPath = path.replace(basePath, '');
+        
+        // If trying to access /login or any other route, redirect to the main app
+        if (cleanPath.includes('/login') || cleanPath === '/') {
+            // Redirect to the main index which will handle routing
+            window.location.href = window.location.origin + basePath + '/';
+        } else {
+            // For any other path, also redirect to main app
+            window.location.href = window.location.origin + basePath + '/';
+        }
+    </script>
+</body>
+</html>

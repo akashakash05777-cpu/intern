@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   outputFileTracingRoot: __dirname,
+  // Configure base path for GitHub Pages
+  basePath: process.env.NODE_ENV === 'production' ? '/intern' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/intern/' : '',
   eslint: {
     // Warning: This allows production builds to successfully complete even if
     // your project has ESLint errors.

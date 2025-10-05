@@ -34,6 +34,8 @@ jobs:
           npm ci
           
       - name: Build Next.js app
+        env:
+          NODE_ENV: production
         run: |
           cd Interconnect
           npm run build
