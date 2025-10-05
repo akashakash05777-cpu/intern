@@ -1,11 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    turbo: {
-      root: __dirname,
-    },
+  // Enable static export for GitHub Pages
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
   },
+  outputFileTracingRoot: __dirname,
   eslint: {
     // Warning: This allows production builds to successfully complete even if
     // your project has ESLint errors.

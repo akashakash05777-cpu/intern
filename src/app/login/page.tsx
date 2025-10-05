@@ -77,7 +77,7 @@ export default function LoginPage() {
         industry: '/industry/dashboard',
         admin: '/admin/dashboard',
       };
-      router.push(roleRoutes[user.role] || '/');
+      router.push(roleRoutes[user.role] || '/login');
     }
   }, [user, router]);
 
