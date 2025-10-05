@@ -42,6 +42,7 @@ import {
   mockApplications, 
   mockInternships 
 } from '@/lib/mock-data';
+import { Application, Student, Internship, Industry } from '@/types';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { format } from 'date-fns';
 
@@ -162,7 +163,7 @@ export default function ApplicationsPage() {
     }
   };
 
-  const getActionButtons = (application: any) => {
+  const getActionButtons = (application: Application) => {
     const buttons = [];
     
     switch (application.status) {
@@ -674,7 +675,7 @@ export default function ApplicationsPage() {
 
 // Application Details Component
 function ApplicationDetails({ application, onAction }: {
-  application: any;
+  application: Application;
   onAction: (id: string, action: string) => void;
 }) {
   if (!application || !application.student || !application.internship) {

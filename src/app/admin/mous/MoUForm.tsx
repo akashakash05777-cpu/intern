@@ -13,7 +13,7 @@ import { format } from 'date-fns';
 
 interface MoUFormProps {
   mou: MoU | null;
-  onSubmit: (data: any) => void;
+  onSubmit: (data: Partial<MoU>) => void;
 }
 
 export default memo(function MoUForm({ mou, onSubmit }: MoUFormProps) {
@@ -102,7 +102,7 @@ export default memo(function MoUForm({ mou, onSubmit }: MoUFormProps) {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <Label htmlFor="internshipType">Internship Type</Label>
-              <Select value={formData.internshipType} onValueChange={(value) => setFormData(prev => ({ ...prev, internshipType: value as any }))}>
+              <Select value={formData.internshipType} onValueChange={(value) => setFormData(prev => ({ ...prev, internshipType: value as MoU['internshipType'] }))}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select type" />
                 </SelectTrigger>
@@ -115,7 +115,7 @@ export default memo(function MoUForm({ mou, onSubmit }: MoUFormProps) {
             </div>
             <div>
               <Label htmlFor="status">Status</Label>
-              <Select value={formData.status} onValueChange={(value) => setFormData(prev => ({ ...prev, status: value as any }))}>
+              <Select value={formData.status} onValueChange={(value) => setFormData(prev => ({ ...prev, status: value as MoU['status'] }))}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select status" />
                 </SelectTrigger>

@@ -24,7 +24,8 @@ import {
   Target,
   CheckCircle,
   Clock,
-  AlertCircle
+  AlertCircle,
+  Building2
 } from 'lucide-react';
 import { 
   mockAdmin, 

@@ -35,6 +35,7 @@ import {
   mockIndustry, 
   mockMous
 } from '@/lib/mock-data';
+import { MoU, Industry } from '@/types';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { format } from 'date-fns';
 
@@ -78,7 +79,7 @@ export default function MoUsPage() {
     setMous(prev => prev.filter(m => m.id !== mouId));
   };
 
-  const handleSubmitMou = (mouData: any) => {
+  const handleSubmitMou = (mouData: Partial<MoU>) => {
     if (editingMou) {
       // Update existing MoU
       setMous(prev => prev.map(m => 
@@ -592,8 +593,8 @@ export default function MoUsPage() {
 
 // MoU Form Component
 function MoUForm({ mou, onSubmit }: {
-  mou: any;
-  onSubmit: (data: any) => void;
+  mou?: MoU;
+  onSubmit: (data: Partial<MoU>) => void;
 }) {
   const [formData, setFormData] = useState({
     title: mou?.title || '',

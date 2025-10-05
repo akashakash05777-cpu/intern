@@ -37,6 +37,7 @@ import {
   mockEvaluations, 
   mockPerformanceMetrics 
 } from '@/lib/mock-data';
+import { Evaluation, Student, Application, Internship, Industry } from '@/types';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { format } from 'date-fns';
 
@@ -99,7 +100,7 @@ export default function EvaluationsPage() {
     setIsCreateDialogOpen(true);
   };
 
-  const handleSubmitEvaluation = (evaluationData: any) => {
+  const handleSubmitEvaluation = (evaluationData: Partial<Evaluation>) => {
     // Mock submit evaluation
     console.log('Submitting evaluation:', evaluationData);
     setIsCreateDialogOpen(false);
@@ -145,7 +146,7 @@ export default function EvaluationsPage() {
                 <DialogHeader>
                   <DialogTitle>Create New Evaluation</DialogTitle>
                   <DialogDescription>
-                    Evaluate a student's performance across different criteria.
+                    Evaluate a student&apos;s performance across different criteria.
                   </DialogDescription>
                 </DialogHeader>
                 <EvaluationForm 
@@ -455,9 +456,9 @@ export default function EvaluationsPage() {
 
 // Evaluation Form Component
 function EvaluationForm({ students, selectedStudent, onSubmit }: {
-  students: any[];
+  students: Student[];
   selectedStudent: string;
-  onSubmit: (data: any) => void;
+  onSubmit: (data: Partial<Evaluation>) => void;
 }) {
   const [formData, setFormData] = useState({
     studentId: selectedStudent,

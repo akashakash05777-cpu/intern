@@ -37,6 +37,7 @@ import {
   mockApplications,
   mockMous
 } from '@/lib/mock-data';
+import { Internship, Application, MoU, Industry } from '@/types';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { format } from 'date-fns';
 
@@ -85,7 +86,7 @@ export default function PostingsPage() {
     setInternships(prev => prev.filter(i => i.id !== postingId));
   };
 
-  const handleSubmitPosting = (postingData: any) => {
+  const handleSubmitPosting = (postingData: Partial<Internship>) => {
     if (editingPosting) {
       // Update existing posting
       setInternships(prev => prev.map(i => 
@@ -484,9 +485,9 @@ export default function PostingsPage() {
 
 // Posting Form Component
 function PostingForm({ posting, mous, onSubmit }: {
-  posting: any;
-  mous: any[];
-  onSubmit: (data: any) => void;
+  posting?: Internship;
+  mous: MoU[];
+  onSubmit: (data: Partial<Internship>) => void;
 }) {
   const [formData, setFormData] = useState({
     title: posting?.title || '',

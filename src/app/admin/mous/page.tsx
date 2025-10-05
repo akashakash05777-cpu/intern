@@ -109,7 +109,7 @@ export default function MoURegistry() {
     setMous(prev => prev.filter(m => m.id !== mouId));
   }, []);
 
-  const handleSubmitMou = useCallback((mouData: any) => {
+  const handleSubmitMou = useCallback((mouData: Partial<MoU>) => {
     if (editingMou) {
       // Update existing MoU
       setMous(prev => prev.map(m => 

@@ -134,7 +134,7 @@ export default function StudentsPage() {
             <div>
               <h1 className="text-3xl font-bold">Student Management</h1>
               <p className="text-muted-foreground">
-                Manage and track your internship students' progress and performance.
+                Manage and track your internship students&apos; progress and performance.
               </p>
             </div>
             <div className="flex items-center gap-2">

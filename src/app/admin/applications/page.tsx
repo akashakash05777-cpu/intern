@@ -38,8 +38,9 @@ import {
   mockApplications, 
   mockStudents, 
   mockInternships,
-  mockIndustry
+  mockIndustry 
 } from '@/lib/mock-data';
+import { Application, Student, Internship, Industry } from '@/types';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { format } from 'date-fns';
 
@@ -81,7 +82,7 @@ export default function ApplicationsPage() {
 
   const handleUpdateStatus = (applicationId: string, newStatus: string) => {
     setApplications(prev => prev.map(app => 
-      app.id === applicationId ? { ...app, status: newStatus as any, updatedAt: new Date() } : app
+      app.id === applicationId ? { ...app, status: newStatus as Application['status'], updatedAt: new Date() } : app
     ));
   };
 
@@ -628,10 +629,10 @@ export default function ApplicationsPage() {
 
 // Application Detail Component
 function ApplicationDetail({ application, student, internship, company }: {
-  application: any;
-  student: any;
-  internship: any;
-  company: any;
+  application: Application;
+  student: Student;
+  internship: Internship;
+  company: Industry;
 }) {
   if (!application || !student || !internship) return null;
 

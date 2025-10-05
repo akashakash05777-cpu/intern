@@ -27,7 +27,7 @@ import {
   GraduationCap,
   Building2,
   Shield,
-  User,
+  User as UserIcon,
   CheckCircle,
   XCircle,
   AlertCircle,
@@ -42,6 +42,7 @@ import {
   mockStaff, 
   mockIndustry 
 } from '@/lib/mock-data';
+import { User, Student, Staff, Industry, Admin } from '@/types';
 import { format } from 'date-fns';
 
 export default function UsersPage() {
@@ -68,7 +69,7 @@ export default function UsersPage() {
     const matchesSearch = user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          user.email.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesRole = selectedRole === 'all' || user.userType === selectedRole;
-    const matchesStatus = selectedStatus === 'all' || (user as any).status === selectedStatus;
+    const matchesStatus = selectedStatus === 'all' || (user as User & { status?: string }).status === selectedStatus;
     
     return matchesSearch && matchesRole && matchesStatus;
   });
@@ -105,7 +106,7 @@ export default function UsersPage() {
     }
   };
 
-  const handleSubmitUser = (userData: any) => {
+  const handleSubmitUser = (userData: Partial<User & Student & Staff & Industry & Admin>) => {
     if (editingUser) {
       // Update existing user
       const userType = userData.userType;
@@ -151,7 +152,7 @@ export default function UsersPage() {
       case 'staff': return <Users className="h-4 w-4 text-green-600" />;
       case 'industry': return <Building2 className="h-4 w-4 text-purple-600" />;
       case 'admin': return <Shield className="h-4 w-4 text-orange-600" />;
-      default: return <User className="h-4 w-4" />;
+      default: return <UserIcon className="h-4 w-4" />;
     }
   };
 

@@ -37,6 +37,7 @@ import {
   mockInternships, 
   mockFeedback 
 } from '@/lib/mock-data';
+import { Feedback, Student, Application, Internship, Industry } from '@/types';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { format } from 'date-fns';
 
@@ -95,7 +96,7 @@ export default function FeedbackPage() {
     setIsCreateDialogOpen(true);
   };
 
-  const handleSubmitFeedback = (feedbackData: any) => {
+  const handleSubmitFeedback = (feedbackData: Partial<Feedback>) => {
     // Mock submit feedback
     console.log('Submitting feedback:', feedbackData);
     setIsCreateDialogOpen(false);
@@ -462,9 +463,9 @@ export default function FeedbackPage() {
 
 // Feedback Form Component
 function FeedbackForm({ students, selectedStudent, onSubmit }: {
-  students: any[];
+  students: Student[];
   selectedStudent: string;
-  onSubmit: (data: any) => void;
+  onSubmit: (data: Partial<Feedback>) => void;
 }) {
   const [formData, setFormData] = useState({
     studentId: selectedStudent,

@@ -84,7 +84,7 @@ export default function StaffDashboard() {
           <div>
             <h1 className="text-3xl font-bold">Welcome back, {currentUser.name}!</h1>
             <p className="text-muted-foreground">
-              Here's an overview of student applications and internship progress.
+              Here&apos;s an overview of student applications and internship progress.
             </p>
           </div>
           <div className="flex items-center space-x-2">

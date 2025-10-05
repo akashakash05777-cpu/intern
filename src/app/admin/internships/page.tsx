@@ -39,6 +39,7 @@ import {
   mockApplications,
   mockIndustry
 } from '@/lib/mock-data';
+import { Internship, Industry } from '@/types';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { format } from 'date-fns';
 
@@ -86,7 +87,7 @@ export default function InternshipsPage() {
     setInternships(prev => prev.filter(i => i.id !== internshipId));
   };
 
-  const handleSubmitInternship = (internshipData: any) => {
+  const handleSubmitInternship = (internshipData: Partial<Internship>) => {
     if (editingInternship) {
       // Update existing internship
       setInternships(prev => prev.map(i => 
@@ -574,9 +575,9 @@ export default function InternshipsPage() {
 
 // Internship Form Component
 function InternshipForm({ internship, industry, onSubmit }: {
-  internship: any;
-  industry: any[];
-  onSubmit: (data: any) => void;
+  internship?: Internship;
+  industry: Industry[];
+  onSubmit: (data: Partial<Internship>) => void;
 }) {
   const [formData, setFormData] = useState({
     title: internship?.title || '',
